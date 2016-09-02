@@ -22,8 +22,12 @@ install appropriate mathics and imathics branches via setup.py and using windows
 
 install node.js as portable version into windows/app/node (see https://gist.github.com/massahud/321a52f153e5d8f571be)
 
-# 5 Run
+# 5 Install NPM packages
 
-run start.bat
+npm install mathjax-node svg2png
+
+# 6 Start Jupyter
+
+just run start.bat
 
 

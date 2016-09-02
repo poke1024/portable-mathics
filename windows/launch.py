@@ -43,5 +43,16 @@ def install_kernelspec():
 
 install_kernelspec()
 
+# install custom.css to get a better visible matching bracket style for [ and ]
+
+import os
+import shutil
+
+shutil.copyfile(
+    os.path.join(os.path.dirname(os.path.realpath(__file__)), 'custom.css'),
+    os.path.join(os.path.expanduser("~"), '.jupyter/custom/custom.css'))
+
+# start jupyter
+
 from notebook import notebookapp
 notebookapp.main()
