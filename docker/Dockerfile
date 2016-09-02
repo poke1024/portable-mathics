@@ -13,10 +13,13 @@ RUN cd $HOME && git clone https://github.com/poke1024/IMathics.git && \
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && apt-get install -y nodejs
 
-RUN apt-get update && apt-get -y install libzmq3-dev && npm install mathjax-node svg2png
+RUN npm install mathjax-node svg2png
 
 ENV NODE_PATH '/home/jovyan/work/node_modules/'
 
 USER $NB_USER
+
+RUN mkdir -p $HOME/.jupyter/custom
+COPY custom.css $HOME/.jupyter/custom/custom.css
 
 RUN conda install -y ipywidgets
