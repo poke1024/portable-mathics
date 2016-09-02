@@ -48,9 +48,13 @@ install_kernelspec()
 import os
 import shutil
 
+config_dir = os.path.join(os.path.expanduser("~"), '.jupyter')
+custom_dir = os.path.join(config_dir, 'custom')
+os.makedirs(custom_dir)
+
 shutil.copyfile(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'custom.css'),
-    os.path.join(os.path.expanduser("~"), '.jupyter/custom/custom.css'))
+    os.path.join(custom_dir, 'custom.css'))
 
 # start jupyter
 

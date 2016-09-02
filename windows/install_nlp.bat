@@ -8,3 +8,5 @@ REM https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/o
 
 pip install spacy
 sputnik --name spacy --repository-url http://index.spacy.io --data-path %MATHICS%\spacy install en==1.1.0
+
+REM http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-image
