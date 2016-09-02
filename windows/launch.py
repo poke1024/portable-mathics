@@ -49,12 +49,21 @@ import os
 import shutil
 
 config_dir = os.path.join(os.path.expanduser("~"), '.jupyter')
+if not os.path.exists(config_dir):
+    os.makedir(config_dir)
+
 custom_dir = os.path.join(config_dir, 'custom')
-os.makedirs(custom_dir)
+if not os.path.exists(custom_dir):
+    os.makedir(custom_dir)
+
+custom_css = os.path.join(custom_dir, 'custom.css')
+
+if os.path.exists(custom_css):
+    os.unlink(custom_css)
 
 shutil.copyfile(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'custom.css'),
-    os.path.join(custom_dir, 'custom.css'))
+    custom_css)
 
 # start jupyter
 
