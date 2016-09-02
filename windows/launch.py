@@ -50,11 +50,11 @@ import shutil
 
 config_dir = os.path.join(os.path.expanduser("~"), '.jupyter')
 if not os.path.exists(config_dir):
-    os.makedir(config_dir)
+    os.makedirs(config_dir)
 
 custom_dir = os.path.join(config_dir, 'custom')
 if not os.path.exists(custom_dir):
-    os.makedir(custom_dir)
+    os.makedirs(custom_dir)
 
 custom_css = os.path.join(custom_dir, 'custom.css')
 
