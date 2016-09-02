@@ -68,4 +68,5 @@ shutil.copyfile(
 # start jupyter
 
 from notebook import notebookapp
+notebookapp.NotebookApp.notebook_dir = os.path.expanduser("~")
 notebookapp.main()
