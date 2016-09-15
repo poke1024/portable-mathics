@@ -1,0 +1,120 @@
+A minimal portable Mathics installation for Jupyter for Windows 64
+
+# Base Installation
+
+Install WinPython 3.5 Zero (see https://sourceforge.net/projects/winpython)
+
+Download MarkupSafe from http://www.lfd.uci.edu/~gohlke/pythonlibs/#markupsafe
+From WinPython Command Prompt:
+
+	pip install path/to/markupsafe.whl
+
+From WinPython Command Prompt:
+
+	pip install jupyter
+
+## Patch notebook-4.x (should be obsolete with notebook-5.x):
+
+### Patch ipython.min.cs and style.min.css in path/to/python/Lib/site-packages/notebook/static/style
+	
+		div.output_area .mglyph > img {
+		  max-width: none;
+		}
+
+### Patch notebook/templates/notebook.html
+
+		<script type="text/javascript" src="{{mathjax_url}}?config=TeX-AMS-MML_HTMLorMML-full,Safe&delayStartupUntil=configured" charset="utf-8"></script>
+
+### Mathjax
+
+	Download full MathJax from http://docs.mathjax.org/en/latest/installation.html and copy into notebook/static/components/MathJax
+
+## Install Mathics and IMathics
+
+From WinPython Command Prompt:
+
+	cd %USERPROFILE%
+	git clone https://github.com/poke1024/IMathics.git
+	cd IMathics
+	python setup.py install
+
+	cd %USERPROFILE%
+	git clone https://github.com/poke1024/Mathics.git
+	cd Mathics
+	git checkout layoutengine
+	python setup.py install
+
+# Optional: make it work on changing users
+
+With changing users, the imathics kernel installation gets lost. With these changes, the imathics kernel gets reinstalled every time Jupyter is started.
+
+add launch.py to winpython/scripts
+
+change winpython/scripts/ipython_notebook.bat accompanying ipython_notebook.bat
+
+# Optional: image support
+
+From WinPython Command Prompt:
+	
+	pip install numpy pillow wordcloud
+
+# Optional: Text[] in Graphics[] and Rasterize[]
+
+Add a portable node distribution as winpython/node
+Make PATH point to that distro (see accompanying ipython_notebook.bat for an example)
+You may want to keep node_modules at a different location due to its size; set NODE_PATH in ipython_notebook.bat to accomplish this
+
+# Optional: natural language parsing support
+
+## WordNet related functions
+
+From WinPython Command Prompt:
+
+	pip install nltk
+
+Now download the needed nltk corpora manually (nltk.download() is broken on Windows) and copy them to
+
+winpython/settings/nltk_data/corpora/omw
+winpython/settings/nltk_data/corpora/wordnet
+winpython/settings/nltk_data/tokenizers/punkt
+
+## Parsing functions
+
+From WinPython Command Prompt:
+
+	pip install spacy
+
+Now download spacy data files (e.g. en and de, see https://spacy.io/) and put them somewhere. Link SPACY_DATA to that path. See accompanying ipython_notebook.bat for an example.
+
+## LanguageIdentify[]
+
+From WinPython Command Prompt:
+
+	pip install langid pycountry
+
+## Pluralize[]
+
+Download lxml from http://www.lfd.uci.edu/~gohlke/pythonlibs and install.
+
+From WinPython Command Prompt:
+	
+	git clone https://github.com/pattern3/pattern
+	cd pattern
+	python setup.py install
+
+## SpellingCorrectionList[]
+
+If you're on 32 bit, download Windows whl from http://pythonhosted.org/pyenchant/download.html and install using pip. If you're on 64 bit, you're probably out of luck: https://stackoverflow.com/questions/37771227/install-pyenchant-on-a-windows-64-bit-machine.
+
+# Optional: OCR
+
+From WinPython Command Prompt:
+	
+	pip install pyocr
+
+Put a portable Tesseract installation somewhere and make it available in PATH.
+
+# Optional: better syntax highlighting in Jupyter
+
+copy accompanying custom.css into winpython/python*/Lib/site-packages/notebook/static/custom/custom.css
+

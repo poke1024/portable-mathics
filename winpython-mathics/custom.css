@@ -1,0 +1,4 @@
+div.CodeMirror span.CodeMirror-matchingbracket {
+    color:blue;
+    border-bottom: 1px solid currentColor;
+}
