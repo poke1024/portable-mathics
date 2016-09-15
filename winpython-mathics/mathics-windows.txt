@@ -108,9 +108,12 @@ If you're on 32 bit, download Windows whl from http://pythonhosted.org/pyenchant
 
 # Optional: OCR
 
+Get the most recent version of pyocr from https://github.com/jflesch/pyocr
+
 From WinPython Command Prompt:
 	
-	pip install pyocr
+	cd pyocr
+	python setup.py install
 
 Put a portable Tesseract installation somewhere and make it available in PATH.
 
