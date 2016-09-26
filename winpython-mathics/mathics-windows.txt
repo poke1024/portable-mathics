@@ -52,6 +52,11 @@ add launch.py to winpython/scripts
 
 change winpython/scripts/ipython_notebook.bat accompanying ipython_notebook.bat
 
+patch env.bat:
+
+set HOME=%~dp0..\settings
+set JUPYTER_DATA_DIR=%USERPROFILE%
+
 # Optional: image support
 
 From WinPython Command Prompt:
@@ -117,7 +122,21 @@ From WinPython Command Prompt:
 
 Put a portable Tesseract installation somewhere and make it available in PATH.
 
-# Optional: better syntax highlighting in Jupyter
+# Optional: better syntax highlighting in Jupyter (Variant A)
 
 copy accompanying custom.css into winpython/python*/Lib/site-packages/notebook/static/custom/custom.css
+
+# Optional: better syntax highlighting in Jupyter (Variant B)
+
+pip install jupyterthemes
+
+now patch path\to\python-3.5.2.amd64\Lib\site-packages\jupyterthemes\styles\compiled\chesterish.css
+to disable font-size:
+
+.MathJax nobr>span.math>span {
+    border: 0 !important;
+    /*font-size: 110% !important;*/
+    text-align: center !important;
+    margin: 0em !important;
+}
 
