@@ -140,3 +140,15 @@ to disable font-size:
     margin: 0em !important;
 }
 
+This will fix the bug that Graphics[Circle[]] produces a circle that is clipped at the top.
+
+## Optional: extend Jupyter kernel timeout
+
+run "juypter --generate-config"
+
+now adjust according to http://jupyter-console.readthedocs.io/en/latest/config_options.html and
+copy to path\to\settings\.jupyter
+
+## Optional: fix network drive node.js starting errors
+
+## Optional: install graphviz
