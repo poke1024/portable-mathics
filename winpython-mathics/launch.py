@@ -42,3 +42,25 @@ def install_kernelspec():
         return
 
 install_kernelspec()
+
+# install jupyter_notebook_config.py (use custom timeout times)
+
+import os
+import shutil
+
+config_dir = os.path.join(os.path.expanduser("~"), '.jupyter')
+if not os.path.exists(config_dir):
+    os.makedirs(config_dir)
+
+notebook_config_path = os.path.join(config_dir, 'jupyter_notebook_config.py')
+
+if os.path.exists(notebook_config_path):
+    os.unlink(notebook_config_path)
+
+target_path = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)),
+    '..', 'settings', 'jupyter_console_config.py')
+
+shutil.copyfile(
+    os.path.realpath(target_path),
+    notebook_config_path)
