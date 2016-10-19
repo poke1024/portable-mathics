@@ -152,3 +152,10 @@ copy to path\to\settings\.jupyter
 ## Optional: fix network drive node.js starting errors
 
 ## Optional: install graphviz
+
+## Optional: build node.js
+
+https://github.com/nodejs/node-v0.x-archive/issues/3977
+
+https://github.com/nodejs/node/wiki/Installation
+

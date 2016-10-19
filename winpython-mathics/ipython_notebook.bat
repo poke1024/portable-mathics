@@ -8,6 +8,9 @@ set SPACY_DATA=%EXTRAS%\spacy
 set TESSDATA_PREFIX=%EXTRAS%\tesseract
 set PATH=%WINPYDIR%\..\node;%WINPYDIR%\..\graphviz\bin;%PATH%;%EXTRAS%\tesseract
 
+subst M: F:\M\Mathics\Program\Mathics\node\node_modules
+set NODE_PATH=M:
+
 set HOME=%USERPROFILE%
 set JUPYTER_DATA_DIR=%USERPROFILE%
 rem cd "%WINPYDIR%\..\imathics"
